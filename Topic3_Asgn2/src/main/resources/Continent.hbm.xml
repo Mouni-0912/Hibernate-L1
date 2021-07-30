@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.wipro.bean.Continent" table="CONTINENT">
+<id name="id" type="int" unsaved-value="0">
+<column name="ID" precision="5" scale="0"/>
+<generator class="increment"></generator>
+</id>
+<property name="name" type="string">
+<column name="NAME" length="15"/>
+</property>
+<map name="countries" table="COUNTRY" fetch="join" lazy="false">
+<key column="ID"/>
+<map-key column="COUNTRYNAME" type="string"/>
+<element type="string" column="COUNTRYCAPITAL" length="100" not-null="true"/>
+</map>
+</class>
+</hibernate-mapping>
